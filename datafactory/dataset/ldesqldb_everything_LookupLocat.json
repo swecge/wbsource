@@ -1,0 +1,42 @@
+{
+	"name": "ldesqldb_everything_LookupLocat",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ldesqldb_everything",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "idLocat",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "LOC",
+				"type": "char"
+			},
+			{
+				"name": "BRANCH",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LOCDESC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COSTC",
+				"type": "nvarchar"
+			},
+			{
+				"name": "BUSSOURCE",
+				"type": "nvarchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LookupLocat"
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+	"name": "ldesqldb_everything",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Data Source=LDEFLXSQLD01.deveu.deverac.local,1333;Initial Catalog=Everything;User ID=Flexe_OnPrem_ETLService",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "akv_whiteboard",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "ldesqldb-password"
+			}
+		},
+		"connectVia": {
+			"referenceName": "eu-coreplatformshared-intruntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}

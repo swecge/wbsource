@@ -1,0 +1,9 @@
+{
+	"name": "flexe-wb-df-dev-ne",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "94cbbee1-cd73-4fdf-b7e7-07652f6d9a12",
+		"tenantId": "5a9bb941-ba53-48d3-b086-2927fea7bf01"
+	}
+}

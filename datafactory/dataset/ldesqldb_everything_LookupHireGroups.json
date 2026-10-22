@@ -1,0 +1,57 @@
+{
+	"name": "ldesqldb_everything_LookupHireGroups",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ldesqldb_everything",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "idHireGroups",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "HIREGROUP",
+				"type": "char"
+			},
+			{
+				"name": "HIREGPDESC",
+				"type": "varchar"
+			},
+			{
+				"name": "VEHTYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "DEPNTYPE",
+				"type": "nvarchar"
+			},
+			{
+				"name": "LIGHTHEAVY",
+				"type": "nvarchar"
+			},
+			{
+				"name": "RFLTAX",
+				"type": "nvarchar"
+			},
+			{
+				"name": "MILEDAY",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MILEPRICE",
+				"type": "money",
+				"precision": 19,
+				"scale": 4
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "LookupHireGroups"
+		}
+	}
+}

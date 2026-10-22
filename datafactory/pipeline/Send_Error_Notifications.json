@@ -1,0 +1,68 @@
+{
+	"name": "Send_Error_Notifications",
+	"properties": {
+		"activities": [
+			{
+				"name": "Whiteboard Email",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"method": "POST",
+					"headers": {
+						"content-type": "application/json"
+					},
+					"disableCertValidation": true,
+					"url": "https://prod-60.northeurope.logic.azure.com:443/workflows/4881e508cb8d441ba7cec61c7306be4f/triggers/request/paths/invoke?api-version=2016-10-01&sp=%2Ftriggers%2Frequest%2Frun&sv=1.0",
+					"body": {
+						"value": "@concat('{\"from_address\":\"',pipeline().parameters.from_address,'\",\"from_name\":\"',pipeline().parameters.from_name,'\",\"recipient_address\":\"',pipeline().parameters.recipient_address,'\",\"subject\":\"',pipeline().parameters.subject,'\",\"message\":\"The Out or Return Location (',pipeline().parameters.location,') assigned to agreement ',pipeline().parameters.agreement,' is incorrect. Please update this rental agreement to view it on the Whiteboard.\"}')",
+						"type": "Expression"
+					},
+					"authentication": {
+						"type": "MSI",
+						"resource": "https://management.azure.com/"
+					}
+				}
+			}
+		],
+		"parameters": {
+			"from_address": {
+				"type": "string"
+			},
+			"from_name": {
+				"type": "string"
+			},
+			"subject": {
+				"type": "string"
+			},
+			"recipient_address": {
+				"type": "string"
+			},
+			"agreement": {
+				"type": "string"
+			},
+			"location": {
+				"type": "string"
+			},
+			"recipient_cc": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"sas_token": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Library"
+		},
+		"annotations": []
+	}
+}

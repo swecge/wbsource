@@ -1,0 +1,536 @@
+{
+	"name": "Whiteboard Data Flush Child",
+	"properties": {
+		"activities": [
+			{
+				"name": "ForEach Company Array 1",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.companies1",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 6,
+					"activities": [
+						{
+							"name": "DR_Agree to Staging",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "@{CONCAT('SELECT REGN,AGREEMNT,GROUP_,TARIFF,STATUS,ACCOUNT,OUTLOCN,OUTDATE,RETLOCN,RETDATE,ONSITE,ONTIME,OFFSITE,OFFTIME,DELADDR001,DELADDR002,DELADDR003,DELADDR004,DELADDR005,DELPCODE,INVNAME,NONBILTB,DELCHTYP,COLCHTYP,DELIVER,COLLECT,COLADDR001,COLADDR002,COLADDR003,COLADDR004,COLADDR005,COLPCODE,CONTRACT,FREETEXT001,FREETEXT002,FREETEXT003,FREETEXT004,FREETEXT005 \nFROM DR_',item(),'_agree \nWHERE\n(\n(OFFSITE BETWEEN ''',pipeline().parameters.today,''' AND ''',pipeline().parameters.todayPlus27Days,''' AND (STATUS = ''A'' OR STATUS = ''B''))\nOR \n(STATUS = ''H'')\n)')}\n\n",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "SqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"columnMappings": {
+										"REGN": "REGNO",
+										"AGREEMNT": "RANO",
+										"GROUP": "HIREGROUP",
+										"TARIFF": "TARIFFCODE",
+										"STATUS": "RASTATUS",
+										"ACCOUNT": "ACCOUNT",
+										"OUTLOCN": "OUTLOC",
+										"OUTDATE": "OUTDATE",
+										"RETLOCN": "RETLOC",
+										"RETDATE": "RETDATE",
+										"ONSITE": "ONSITEDATE",
+										"ONTIME": "ONSITETIME",
+										"OFFSITE": "OFFSITEDATE",
+										"OFFTIME": "OFFSITETIME",
+										"DELADDR001": "DELADD1",
+										"DELADDR002": "DELADD2",
+										"DELADDR003": "DELADD3",
+										"DELADDR004": "DELADD4",
+										"DELADDR005": "DELADD5",
+										"DELPCODE": "DELPOSTCODE",
+										"INVNAME": "INVNAME",
+										"NONBILTB": "NONBILTB",
+										"DELCHTYP": "DELTYPE",
+										"COLCHTYP": "COLTYPE",
+										"DELIVER": "DELIVER",
+										"COLLECT": "COLLECT",
+										"COLADDR001": "COLADD1",
+										"COLADDR002": "COLADD2",
+										"COLADDR003": "COLADD3",
+										"COLADDR004": "COLADD4",
+										"COLADDR005": "COLADD5",
+										"COLPCODE": "COLPOSTCODE",
+										"CONTRACT": "CONTRACT",
+										"FREETEXT001": "COMMENTS1",
+										"FREETEXT002": "COMMENTS2",
+										"FREETEXT003": "COMMENTS3",
+										"FREETEXT004": "COMMENTS4",
+										"FREETEXT005": "COMMENTS5"
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "whiteboard_odbc_kerridge_0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "whiteboard_asqldb_everything_0",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach Company Array 2",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.companies2",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 6,
+					"activities": [
+						{
+							"name": "DR_Agree to Staging 2",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "@{CONCAT('SELECT REGN,AGREEMNT,GROUP_,TARIFF,STATUS,ACCOUNT,OUTLOCN,OUTDATE,RETLOCN,RETDATE,ONSITE,ONTIME,OFFSITE,OFFTIME,DELADDR001,DELADDR002,DELADDR003,DELADDR004,DELADDR005,DELPCODE,INVNAME,NONBILTB,DELCHTYP,COLCHTYP,DELIVER,COLLECT,COLADDR001,COLADDR002,COLADDR003,COLADDR004,COLADDR005,COLPCODE,CONTRACT,FREETEXT001,FREETEXT002,FREETEXT003,FREETEXT004,FREETEXT005 \nFROM DR_',item(),'_agree \nWHERE\n(\n(OFFSITE BETWEEN ''',pipeline().parameters.today,''' AND ''',pipeline().parameters.todayPlus27Days,''' AND (STATUS = ''A'' OR STATUS = ''B''))\nOR \n(STATUS = ''H'')\n)')}\n\n",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "SqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"columnMappings": {
+										"REGN": "REGNO",
+										"AGREEMNT": "RANO",
+										"GROUP": "HIREGROUP",
+										"TARIFF": "TARIFFCODE",
+										"STATUS": "RASTATUS",
+										"ACCOUNT": "ACCOUNT",
+										"OUTLOCN": "OUTLOC",
+										"OUTDATE": "OUTDATE",
+										"RETLOCN": "RETLOC",
+										"RETDATE": "RETDATE",
+										"ONSITE": "ONSITEDATE",
+										"ONTIME": "ONSITETIME",
+										"OFFSITE": "OFFSITEDATE",
+										"OFFTIME": "OFFSITETIME",
+										"DELADDR001": "DELADD1",
+										"DELADDR002": "DELADD2",
+										"DELADDR003": "DELADD3",
+										"DELADDR004": "DELADD4",
+										"DELADDR005": "DELADD5",
+										"DELPCODE": "DELPOSTCODE",
+										"INVNAME": "INVNAME",
+										"NONBILTB": "NONBILTB",
+										"DELCHTYP": "DELTYPE",
+										"COLCHTYP": "COLTYPE",
+										"DELIVER": "DELIVER",
+										"COLLECT": "COLLECT",
+										"COLADDR001": "COLADD1",
+										"COLADDR002": "COLADD2",
+										"COLADDR003": "COLADD3",
+										"COLADDR004": "COLADD4",
+										"COLADDR005": "COLADD5",
+										"COLPCODE": "COLPOSTCODE",
+										"CONTRACT": "CONTRACT",
+										"FREETEXT001": "COMMENTS1",
+										"FREETEXT002": "COMMENTS2",
+										"FREETEXT003": "COMMENTS3",
+										"FREETEXT004": "COMMENTS4",
+										"FREETEXT005": "COMMENTS5"
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "whiteboard_odbc_kerridge_0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "whiteboard_asqldb_everything_0",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach Company Array 3",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.companies3",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 6,
+					"activities": [
+						{
+							"name": "DR_Agree to Staging 3",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "@{CONCAT('SELECT REGN,AGREEMNT,GROUP_,TARIFF,STATUS,ACCOUNT,OUTLOCN,OUTDATE,RETLOCN,RETDATE,ONSITE,ONTIME,OFFSITE,OFFTIME,DELADDR001,DELADDR002,DELADDR003,DELADDR004,DELADDR005,DELPCODE,INVNAME,NONBILTB,DELCHTYP,COLCHTYP,DELIVER,COLLECT,COLADDR001,COLADDR002,COLADDR003,COLADDR004,COLADDR005,COLPCODE,CONTRACT,FREETEXT001,FREETEXT002,FREETEXT003,FREETEXT004,FREETEXT005 \nFROM DR_',item(),'_agree \nWHERE\n(\n(OFFSITE BETWEEN ''',pipeline().parameters.today,''' AND ''',pipeline().parameters.todayPlus27Days,''' AND (STATUS = ''A'' OR STATUS = ''B''))\nOR \n(STATUS = ''H'')\n)')}\n\n",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "SqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"columnMappings": {
+										"REGN": "REGNO",
+										"AGREEMNT": "RANO",
+										"GROUP": "HIREGROUP",
+										"TARIFF": "TARIFFCODE",
+										"STATUS": "RASTATUS",
+										"ACCOUNT": "ACCOUNT",
+										"OUTLOCN": "OUTLOC",
+										"OUTDATE": "OUTDATE",
+										"RETLOCN": "RETLOC",
+										"RETDATE": "RETDATE",
+										"ONSITE": "ONSITEDATE",
+										"ONTIME": "ONSITETIME",
+										"OFFSITE": "OFFSITEDATE",
+										"OFFTIME": "OFFSITETIME",
+										"DELADDR001": "DELADD1",
+										"DELADDR002": "DELADD2",
+										"DELADDR003": "DELADD3",
+										"DELADDR004": "DELADD4",
+										"DELADDR005": "DELADD5",
+										"DELPCODE": "DELPOSTCODE",
+										"INVNAME": "INVNAME",
+										"NONBILTB": "NONBILTB",
+										"DELCHTYP": "DELTYPE",
+										"COLCHTYP": "COLTYPE",
+										"DELIVER": "DELIVER",
+										"COLLECT": "COLLECT",
+										"COLADDR001": "COLADD1",
+										"COLADDR002": "COLADD2",
+										"COLADDR003": "COLADD3",
+										"COLADDR004": "COLADD4",
+										"COLADDR005": "COLADD5",
+										"COLPCODE": "COLPOSTCODE",
+										"CONTRACT": "CONTRACT",
+										"FREETEXT001": "COMMENTS1",
+										"FREETEXT002": "COMMENTS2",
+										"FREETEXT003": "COMMENTS3",
+										"FREETEXT004": "COMMENTS4",
+										"FREETEXT005": "COMMENTS5"
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "whiteboard_odbc_kerridge_0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "whiteboard_asqldb_everything_0",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach Company Array 4",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.companies4",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 6,
+					"activities": [
+						{
+							"name": "DR_Agree to Staging 4",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "@{CONCAT('SELECT REGN,AGREEMNT,GROUP_,TARIFF,STATUS,ACCOUNT,OUTLOCN,OUTDATE,RETLOCN,RETDATE,ONSITE,ONTIME,OFFSITE,OFFTIME,DELADDR001,DELADDR002,DELADDR003,DELADDR004,DELADDR005,DELPCODE,INVNAME,NONBILTB,DELCHTYP,COLCHTYP,DELIVER,COLLECT,COLADDR001,COLADDR002,COLADDR003,COLADDR004,COLADDR005,COLPCODE,CONTRACT,FREETEXT001,FREETEXT002,FREETEXT003,FREETEXT004,FREETEXT005 \nFROM DR_',item(),'_agree \nWHERE\n(\n(OFFSITE BETWEEN ''',pipeline().parameters.today,''' AND ''',pipeline().parameters.todayPlus27Days,''' AND (STATUS = ''A'' OR STATUS = ''B''))\nOR \n(STATUS = ''H'')\n)')}\n\n",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "SqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"columnMappings": {
+										"REGN": "REGNO",
+										"AGREEMNT": "RANO",
+										"GROUP": "HIREGROUP",
+										"TARIFF": "TARIFFCODE",
+										"STATUS": "RASTATUS",
+										"ACCOUNT": "ACCOUNT",
+										"OUTLOCN": "OUTLOC",
+										"OUTDATE": "OUTDATE",
+										"RETLOCN": "RETLOC",
+										"RETDATE": "RETDATE",
+										"ONSITE": "ONSITEDATE",
+										"ONTIME": "ONSITETIME",
+										"OFFSITE": "OFFSITEDATE",
+										"OFFTIME": "OFFSITETIME",
+										"DELADDR001": "DELADD1",
+										"DELADDR002": "DELADD2",
+										"DELADDR003": "DELADD3",
+										"DELADDR004": "DELADD4",
+										"DELADDR005": "DELADD5",
+										"DELPCODE": "DELPOSTCODE",
+										"INVNAME": "INVNAME",
+										"NONBILTB": "NONBILTB",
+										"DELCHTYP": "DELTYPE",
+										"COLCHTYP": "COLTYPE",
+										"DELIVER": "DELIVER",
+										"COLLECT": "COLLECT",
+										"COLADDR001": "COLADD1",
+										"COLADDR002": "COLADD2",
+										"COLADDR003": "COLADD3",
+										"COLADDR004": "COLADD4",
+										"COLADDR005": "COLADD5",
+										"COLPCODE": "COLPOSTCODE",
+										"CONTRACT": "CONTRACT",
+										"FREETEXT001": "COMMENTS1",
+										"FREETEXT002": "COMMENTS2",
+										"FREETEXT003": "COMMENTS3",
+										"FREETEXT004": "COMMENTS4",
+										"FREETEXT005": "COMMENTS5"
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "whiteboard_odbc_kerridge_0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "whiteboard_asqldb_everything_0",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			},
+			{
+				"name": "ForEach Company Array 5",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.companies5",
+						"type": "Expression"
+					},
+					"isSequential": false,
+					"batchCount": 6,
+					"activities": [
+						{
+							"name": "DR_Agree to Staging 5",
+							"type": "Copy",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"source": {
+									"type": "RelationalSource",
+									"query": {
+										"value": "@{CONCAT('SELECT REGN,AGREEMNT,GROUP_,TARIFF,STATUS,ACCOUNT,OUTLOCN,OUTDATE,RETLOCN,RETDATE,ONSITE,ONTIME,OFFSITE,OFFTIME,DELADDR001,DELADDR002,DELADDR003,DELADDR004,DELADDR005,DELPCODE,INVNAME,NONBILTB,DELCHTYP,COLCHTYP,DELIVER,COLLECT,COLADDR001,COLADDR002,COLADDR003,COLADDR004,COLADDR005,COLPCODE,CONTRACT,FREETEXT001,FREETEXT002,FREETEXT003,FREETEXT004,FREETEXT005 \nFROM DR_',item(),'_agree \nWHERE\n(\n(OFFSITE BETWEEN ''',pipeline().parameters.today,''' AND ''',pipeline().parameters.todayPlus27Days,''' AND (STATUS = ''A'' OR STATUS = ''B''))\nOR \n(STATUS = ''H'')\n)')}\n\n",
+										"type": "Expression"
+									}
+								},
+								"sink": {
+									"type": "SqlSink"
+								},
+								"enableStaging": false,
+								"translator": {
+									"type": "TabularTranslator",
+									"columnMappings": {
+										"REGN": "REGNO",
+										"AGREEMNT": "RANO",
+										"GROUP": "HIREGROUP",
+										"TARIFF": "TARIFFCODE",
+										"STATUS": "RASTATUS",
+										"ACCOUNT": "ACCOUNT",
+										"OUTLOCN": "OUTLOC",
+										"OUTDATE": "OUTDATE",
+										"RETLOCN": "RETLOC",
+										"RETDATE": "RETDATE",
+										"ONSITE": "ONSITEDATE",
+										"ONTIME": "ONSITETIME",
+										"OFFSITE": "OFFSITEDATE",
+										"OFFTIME": "OFFSITETIME",
+										"DELADDR001": "DELADD1",
+										"DELADDR002": "DELADD2",
+										"DELADDR003": "DELADD3",
+										"DELADDR004": "DELADD4",
+										"DELADDR005": "DELADD5",
+										"DELPCODE": "DELPOSTCODE",
+										"INVNAME": "INVNAME",
+										"NONBILTB": "NONBILTB",
+										"DELCHTYP": "DELTYPE",
+										"COLCHTYP": "COLTYPE",
+										"DELIVER": "DELIVER",
+										"COLLECT": "COLLECT",
+										"COLADDR001": "COLADD1",
+										"COLADDR002": "COLADD2",
+										"COLADDR003": "COLADD3",
+										"COLADDR004": "COLADD4",
+										"COLADDR005": "COLADD5",
+										"COLPCODE": "COLPOSTCODE",
+										"CONTRACT": "CONTRACT",
+										"FREETEXT001": "COMMENTS1",
+										"FREETEXT002": "COMMENTS2",
+										"FREETEXT003": "COMMENTS3",
+										"FREETEXT004": "COMMENTS4",
+										"FREETEXT005": "COMMENTS5"
+									}
+								}
+							},
+							"inputs": [
+								{
+									"referenceName": "whiteboard_odbc_kerridge_0",
+									"type": "DatasetReference"
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "whiteboard_asqldb_everything_0",
+									"type": "DatasetReference"
+								}
+							]
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"companies1": {
+				"type": "array"
+			},
+			"companies2": {
+				"type": "array"
+			},
+			"companies3": {
+				"type": "array"
+			},
+			"companies4": {
+				"type": "array"
+			},
+			"companies5": {
+				"type": "array"
+			},
+			"today": {
+				"type": "string"
+			},
+			"todayPlus27Days": {
+				"type": "string"
+			}
+		},
+		"variables": {
+			"company1": {
+				"type": "String"
+			},
+			"company2": {
+				"type": "String"
+			},
+			"company3": {
+				"type": "String"
+			},
+			"company4": {
+				"type": "String"
+			},
+			"company5": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "Child Pipelines"
+		},
+		"annotations": []
+	}
+}

@@ -1,0 +1,11 @@
+{
+	"name": "asqldb_whiteboard",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=flexe-wb-sqlsvc-dev-ne.database.windows.net;Initial Catalog=flexe-wb-sqldb-dev"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
+}

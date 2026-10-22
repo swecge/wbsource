@@ -1,0 +1,170 @@
+{
+	"name": "ldesqldb_eu_everything_WhiteboardData",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ldesqleudb_everything",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "REGNO",
+				"type": "varchar"
+			},
+			{
+				"name": "RANO",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "HIREGROUP",
+				"type": "char"
+			},
+			{
+				"name": "TARIFFCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "RASTATUS",
+				"type": "char"
+			},
+			{
+				"name": "ACCOUNT",
+				"type": "varchar"
+			},
+			{
+				"name": "OUTLOC",
+				"type": "char"
+			},
+			{
+				"name": "OUTDATE",
+				"type": "date"
+			},
+			{
+				"name": "RETLOC",
+				"type": "char"
+			},
+			{
+				"name": "RETDATE",
+				"type": "date"
+			},
+			{
+				"name": "ONSITEDATE",
+				"type": "date"
+			},
+			{
+				"name": "ONSITETIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "OFFSITEDATE",
+				"type": "date"
+			},
+			{
+				"name": "OFFSITETIME",
+				"type": "nvarchar"
+			},
+			{
+				"name": "DELADD1",
+				"type": "char"
+			},
+			{
+				"name": "DELADD2",
+				"type": "char"
+			},
+			{
+				"name": "DELADD3",
+				"type": "char"
+			},
+			{
+				"name": "DELADD4",
+				"type": "char"
+			},
+			{
+				"name": "DELADD5",
+				"type": "char"
+			},
+			{
+				"name": "DELPOSTCODE",
+				"type": "char"
+			},
+			{
+				"name": "INVNAME",
+				"type": "varchar"
+			},
+			{
+				"name": "NONBILTB",
+				"type": "varchar"
+			},
+			{
+				"name": "DELTYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "COLTYPE",
+				"type": "varchar"
+			},
+			{
+				"name": "DELIVER",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COLLECT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COLADD1",
+				"type": "varchar"
+			},
+			{
+				"name": "COLADD2",
+				"type": "varchar"
+			},
+			{
+				"name": "COLADD3",
+				"type": "varchar"
+			},
+			{
+				"name": "COLADD4",
+				"type": "varchar"
+			},
+			{
+				"name": "COLADD5",
+				"type": "varchar"
+			},
+			{
+				"name": "COLPOSTCODE",
+				"type": "varchar"
+			},
+			{
+				"name": "CONTRACT",
+				"type": "nvarchar"
+			},
+			{
+				"name": "COMMENTS1",
+				"type": "varchar"
+			},
+			{
+				"name": "COMMENTS2",
+				"type": "varchar"
+			},
+			{
+				"name": "COMMENTS3",
+				"type": "varchar"
+			},
+			{
+				"name": "COMMENTS4",
+				"type": "varchar"
+			},
+			{
+				"name": "COMMENTS5",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Whiteboard_Data"
+		}
+	}
+}

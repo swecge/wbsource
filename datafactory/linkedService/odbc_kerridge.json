@@ -1,0 +1,27 @@
+{
+	"name": "odbc_kerridge",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "Odbc",
+		"typeProperties": {
+			"connectionString": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"authenticationType": "Anonymous",
+			"credential": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "akv_whiteboard",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "cdkodbc-kerridge-password"
+			}
+		},
+		"connectVia": {
+			"referenceName": "eu-coreplatformshared-intruntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
