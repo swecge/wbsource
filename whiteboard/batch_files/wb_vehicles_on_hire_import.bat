@@ -1,1 +1,0 @@
-D:\mysql\bin\mysqlimport.exe --host=localhost --user=root --password=1tsystems --delete --fields-terminated-by="," --fields-enclosed-by="\"" whiteboard D:\htdocs\csv_data\wbren.csv
